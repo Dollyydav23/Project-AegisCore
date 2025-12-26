@@ -1,9 +1,24 @@
 pipeline {
     agent any
     stages {
-        stage ('Hello') {
+        stage ('Build') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true // Reuse the node for the next stages modified this for commit
+                }
+            }
             steps {
-                echo 'Hello world'
+                dir('Attack_Simulation_Defense_Framework/frontend') {
+                sh '''
+                   ls -l  
+                   node --version 
+                   npm --version
+                   npm install
+                   npm run build
+                   ls -l
+                ''' 
+                // list the node and contect
             }
         }
     }
