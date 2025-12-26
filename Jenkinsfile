@@ -14,6 +14,7 @@ pipeline {
                    ls -l  
                    node --version 
                    npm --version
+                   npm config set cache .npm --global
                    npm install
                    npm run build
                    ls -l
