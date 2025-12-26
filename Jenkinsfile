@@ -14,7 +14,7 @@ pipeline {
                    ls -l  
                    node --version 
                    npm --version
-                   npm config set cache .npm --global
+                   export NPM_CONFIG_CACHE=$PWD/.npm
                    npm install
                    npm run build
                    ls -l
